@@ -42,31 +42,22 @@ public class SIT_203 {
         Order[] leftArray = new Order[n1];
         Order[] rightArray = new Order[n2];
 
-        for(int i = 0; i < n1; i++){
-            leftArray[i] = orders[left + i];
+        int leftIndex = 0;
+        for (Order order : java.util.Arrays.copyOfRange(orders, left, mid + 1)) {
+            leftArray[leftIndex++] = order;
         }
-        for(int j = 0; j < n2; j++){
-            rightArray[j] = orders[mid + 1 + j];
+
+        int rightIndex = 0;
+        for (Order order : java.util.Arrays.copyOfRange(orders, mid + 1, right + 1)) {
+            rightArray[rightIndex++] = order;
         }
 
         int i = 0, j = 0, k = left;
         while(i < n1 && j < n2){
-            if(leftArray[i].customerType.equals("Prime") && rightArray[j].customerType.equals("Regular")){
+            if(compare(leftArray[i], rightArray[j]) <= 0){
                 orders[k++] = leftArray[i++];
-            } else if(leftArray[i].customerType.equals("Regular") && rightArray[j].customerType.equals("Prime")){
-                orders[k++] = rightArray[j++];
             } else {
-                if(leftArray[i].orderValue > rightArray[j].orderValue){
-                    orders[k++] = leftArray[i++];
-                } else if(leftArray[i].orderValue < rightArray[j].orderValue){
-                    orders[k++] = rightArray[j++];
-                } else {
-                    if(leftArray[i].deliveryTime < rightArray[j].deliveryTime){
-                        orders[k++] = leftArray[i++];
-                    } else {
-                        orders[k++] = rightArray[j++];
-                    }
-                }
+                orders[k++] = rightArray[j++];
             }
         }
         while(i < n1){
@@ -75,5 +66,17 @@ public class SIT_203 {
         while(j < n2){
             orders[k++] = rightArray[j++];
         }
+    }
+
+    static int compare(Order first, Order second) {
+        if (!first.customerType.equals(second.customerType)) {
+            return first.customerType.equals("Prime") ? -1 : 1;
+        }
+
+        if (first.orderValue != second.orderValue) {
+            return Double.compare(second.orderValue, first.orderValue);
+        }
+
+        return Integer.compare(first.deliveryTime, second.deliveryTime);
     }
 }

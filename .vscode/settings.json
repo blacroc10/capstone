@@ -1,0 +1,16 @@
+{
+  "java.validate.enable": false,
+  "java.errors.incompleteClasspath.severity": "ignore",
+  "java.project.sourcePaths": [
+    "day_1",
+    "day_2",
+    "day_3",
+    "day_4",
+    "day_5",
+    "day_6"
+  ],
+  "editor.showUnused": false,
+  "java.eclipse.preferences": {
+    "org.eclipse.jdt.core.compiler.problem.missingOverrideAnnotation": "ignore"
+  }
+}

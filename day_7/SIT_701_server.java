@@ -1,5 +1,5 @@
 /*
-      SOCKET PROGRAMMING
+     SOCKET PROGRAMMING
 
       Socket = Communication EndPoint
       A socket acts like a telephone connection between
@@ -24,7 +24,7 @@ import java.io.*;
 import java.net.*;
 
 // This class represents SERVER
-public class SIT_701 {
+public class SIT_701_server {
     public static void main(String[] args) throws IOException {
         // Create server on port i.e 3000.
         // Internal working: Java opens port 3000 and listens for incoming client
